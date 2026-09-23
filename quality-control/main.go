@@ -56,5 +56,13 @@ func main() {
 }
 
 func QualityControl(n int, nums []int) int {
-	return 0
+	prev := -1
+
+	for _, v := range nums {
+		if v%2 == 0 {
+			prev = v
+		}
+	}
+
+	return prev
 }
