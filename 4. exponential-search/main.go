@@ -63,5 +63,25 @@ func main() {
 }
 
 func ExponentialSearch(n int, nums []int, target int) []int {
-	return nil
+	if n == 0 {
+		return []int{-1, -1}
+	}
+
+	if nums[0] > target {
+		return []int{0, 0}
+	}
+
+	var i int
+
+	for i = 1; i < n; i *= 2 {
+		if nums[i] > target {
+			break
+		}
+	}
+
+	if i >= n {
+		return []int{i / 2, n - 1}
+	} else {
+		return []int{i / 2, i}
+	}
 }
