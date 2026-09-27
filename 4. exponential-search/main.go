@@ -47,7 +47,7 @@ func (o *IO) ReadConditions() (int, []int, int) {
 
 func (o *IO) WriteResult(res []int) {
 	for _, v := range res {
-		fmt.Fprintf(o.w, "%v", v)
+		fmt.Fprintf(o.w, "%v ", v)
 	}
 }
 
