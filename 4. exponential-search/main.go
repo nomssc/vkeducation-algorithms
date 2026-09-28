@@ -85,3 +85,5 @@ func ExponentialSearch(n int, nums []int, target int) []int {
 		return []int{i / 2, i}
 	}
 }
+
+func New() {}
