@@ -86,4 +86,6 @@ func ExponentialSearch(n int, nums []int, target int) []int {
 	}
 }
 
+type OP struct{}
+
 func New() {}
