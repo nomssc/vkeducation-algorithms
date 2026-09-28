@@ -85,9 +85,3 @@ func ExponentialSearch(n int, nums []int, target int) []int {
 		return []int{i / 2, i}
 	}
 }
-
-type OP struct {
-	OK bool
-}
-
-func New() {}
