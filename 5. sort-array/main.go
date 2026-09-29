@@ -28,18 +28,18 @@ func (o *IO) Close() error {
 	return o.w.Flush()
 }
 
-func (o *IO) ReadConditions() (int, []int) {
+func (o *IO) ReadConditions() []int {
 	o.s.Scan()
 	n, _ := strconv.Atoi(o.s.Text())
 
 	nums := make([]int, n)
 
-	for i := range n {
+	for i := range n - 1 {
 		o.s.Scan()
 		nums[i], _ = strconv.Atoi(o.s.Text())
 	}
 
-	return n, nums
+	return nums
 }
 
 func (o *IO) WriteResult(res []int) {
@@ -51,13 +51,35 @@ func (o *IO) WriteResult(res []int) {
 func main() {
 	o := NewIO()
 
-	n, nums := o.ReadConditions()
+	nums := o.ReadConditions()
 
-	res := QuickSort(n, nums)
+	QuickSort(0, len(nums)-1, nums)
 
-	o.WriteResult(res)
+	fmt.Println(nums)
+
+	o.WriteResult(nums)
 }
 
-func QuickSort(n int, nums []int) []int {
-	return nil
+func QuickSort(low int, high int, nums []int) {
+	if low >= high {
+		return
+	}
+
+	pivot := nums[high]
+
+	i, j := low, low
+
+	for j < high {
+		if nums[j] < pivot {
+			nums[i], nums[j] = nums[j], nums[i]
+			i++
+		}
+
+		j++
+	}
+
+	nums[i], nums[j] = nums[j], nums[i]
+
+	QuickSort(low, i-1, nums)
+	QuickSort(i+1, high, nums)
 }
