@@ -34,7 +34,7 @@ func (o *IO) ReadConditions() []int {
 
 	nums := make([]int, n)
 
-	for i := range n - 1 {
+	for i := 0; i < n; i++ {
 		o.s.Scan()
 		nums[i], _ = strconv.Atoi(o.s.Text())
 	}
@@ -54,8 +54,6 @@ func main() {
 	nums := o.ReadConditions()
 
 	QuickSort(0, len(nums)-1, nums)
-
-	fmt.Println(nums)
 
 	o.WriteResult(nums)
 }
