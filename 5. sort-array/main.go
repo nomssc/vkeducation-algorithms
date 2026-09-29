@@ -34,7 +34,7 @@ func (o *IO) ReadConditions() (int, []int) {
 
 	nums := make([]int, n)
 
-	for i := 0; i < n; i++ {
+	for i := range n {
 		o.s.Scan()
 		nums[i], _ = strconv.Atoi(o.s.Text())
 	}
