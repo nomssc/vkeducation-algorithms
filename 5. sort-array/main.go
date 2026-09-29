@@ -47,3 +47,17 @@ func (o *IO) WriteResult(res []int) {
 		fmt.Fprintf(o.w, "%v ", v)
 	}
 }
+
+func main() {
+	o := NewIO()
+
+	n, nums := o.ReadConditions()
+
+	res := QuickSort(n, nums)
+
+	o.WriteResult(res)
+}
+
+func QuickSort(n int, nums []int) []int {
+	return nil
+}
