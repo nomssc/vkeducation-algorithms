@@ -28,7 +28,7 @@ func (o *IO) Close() error {
 	return o.w.Flush()
 }
 
-func (o *IO) ReadConditions() (int, []int, int) {
+func (o *IO) ReadConditions() (int, []int) {
 	o.s.Scan()
 	n, _ := strconv.Atoi(o.s.Text())
 
@@ -39,10 +39,7 @@ func (o *IO) ReadConditions() (int, []int, int) {
 		nums[i], _ = strconv.Atoi(o.s.Text())
 	}
 
-	o.s.Scan()
-	target, _ := strconv.Atoi(o.s.Text())
-
-	return n, nums, target
+	return n, nums
 }
 
 func (o *IO) WriteResult(res []int) {
